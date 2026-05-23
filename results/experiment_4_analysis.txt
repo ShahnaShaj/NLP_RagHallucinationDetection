@@ -1,0 +1,21 @@
+EXPERIMENT 4 — CROSS-DOMAIN TRANSFER
+
+Retrieved context should reduce predictive uncertainty for faithful tokens — when it fails to do so, measured as Information Gain and KL Divergence between context-free and context-conditioned token distributions, that failure signal begins rising before hallucination onset and reaches peak separability at the hallucinated token (t−1 to t=0).
+
+ZERO-SHOT: No refitting of any parameter on HaluEval.
+Same unsupervised composite from RAGTruth applied directly.
+Same train statistics, same weights, same windowing.
+
+HaluEval composite AUROC: 0.6556
+Most brittle metric: kl (drop=+0.0990)
+
+RANK INSTABILITY EXPLANATION:
+Metrics that depend on absolute distributional properties (entropy, KL)
+are more sensitive to domain shift because token distributions differ
+between RAGTruth (long documents) and HaluEval (short QA). Context-
+differential metrics (IG) are more stable because the with-vs-without
+comparison is format-independent.
+
+Our core insight — measuring uncertainty CHANGES due to context rather
+than absolute uncertainty — produces more robust cross-domain signals
+than approaches depending on surface-level text properties.

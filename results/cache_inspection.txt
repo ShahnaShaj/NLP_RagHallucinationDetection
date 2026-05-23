@@ -1,0 +1,75 @@
+﻿RAGTruth test samples: 2700
+HaluEval samples: 10000
+
+Keys in result: ['dataset', 'meta', 'labels', 'types', 'token_ids', 'tokens', 'scores', 'scores_raw', 'context_utilization', 'composite', 'text']
+  labels shape: (118,)
+  types sample: ['faithful', 'faithful', 'faithful', 'faithful', 'faithful']
+  scores keys: ['entropy', 'ig', 'kl', 'cd', 'se', 'selfcheck']
+    entropy: shape=(118,) range=[0.0000, 1.0000]
+    ig: shape=(118,) range=[0.0000, 1.0000]
+    kl: shape=(118,) range=[0.0000, 1.0000]
+    cd: shape=(118,) range=[0.0000, 1.0000]
+    se: shape=(118,) range=[0.0000, 0.0000]
+    selfcheck: shape=(118,) range=[0.0000, 1.0000]
+  scores_raw keys: ['entropy', 'ig', 'kl', 'cd', 'se', 'selfcheck']
+    entropy: shape=(118,) range=[0.0006, 3.8180]
+    ig: shape=(118,) range=[-4.1648, 1.3793]
+    kl: shape=(118,) range=[-6.8333, -0.0001]
+    cd: shape=(118,) range=[-0.4658, 0.9939]
+    se: shape=(118,) range=[0.0000, 0.0000]
+    selfcheck: shape=(118,) range=[0.0000, 0.9995]
+  composite: shape=(118,) range=[0.2482, 0.7899]
+  meta: {'sample_id': '24', 'task_type': 'Summary', 'generator': 'gpt-4-0613', 'quality': 'good'}
+
+Direction flags:
+  entropy: negate=False raw=0.5512 neg=0.4488
+  ig: negate=True raw=0.4129 neg=0.5871
+  kl: negate=True raw=0.4475 neg=0.5525
+  cd: negate=True raw=0.6072 neg=0.3928
+  se: negate=False raw=0.5000 neg=0.5000
+  selfcheck: negate=False raw=0.5630 neg=0.4370
+
+=== AUROC with per-sample scaled scores (current) ===
+  entropy: AUROC=0.5317 (n=453867)
+  ig: AUROC=0.5189 (n=453867)
+  kl: AUROC=0.5970 (n=453867)
+  cd: AUROC=0.4357 (n=453867)
+  se: AUROC=0.5003 (n=453867)
+  selfcheck: AUROC=0.5428 (n=453867)
+  composite: AUROC=0.5283
+
+=== AUROC with raw directed scores ===
+  entropy: raw=0.5375 neg=0.4625 best=0.5375 (keep)
+  ig: raw=0.6191 neg=0.3809 best=0.6191 (keep)
+  kl: raw=0.6077 neg=0.3923 best=0.6077 (keep)
+  cd: raw=0.3860 neg=0.6140 best=0.6140 (negate)
+  se: raw=0.5003 neg=0.4997 best=0.5003 (keep)
+  selfcheck: raw=0.5430 neg=0.4570 best=0.5430 (keep)
+
+=== Logistic Composite (fix CD direction, use raw scores) ===
+  Total tokens: 453867, hallucinated: 18566 (4.09%)
+  entropy (fixed): raw=0.5375 neg=0.4625 best=0.5375
+  ig (fixed): raw=0.6191 neg=0.3809 best=0.6191
+  kl (fixed): raw=0.6077 neg=0.3923 best=0.6077
+  cd (fixed): raw=0.6140 neg=0.3860 best=0.6140
+  selfcheck (fixed): raw=0.5430 neg=0.4570 best=0.5430
+  Auto-fixed signs: {'entropy': 1, 'ig': 1, 'kl': 1, 'cd': 1, 'selfcheck': 1}
+
+  Logistic AUROC (eval half): 0.6327
+  Coefficients: {'entropy': np.float64(0.0191), 'ig': np.float64(0.3461), 'kl': np.float64(0.1124), 'cd': np.float64(0.2318), 'selfcheck': np.float64(0.1072)}
+  Logistic AUROC (full, in-sample): 0.6350
+  Full coefficients: {'entropy': np.float64(0.0101), 'ig': np.float64(0.327), 'kl': np.float64(0.1284), 'cd': np.float64(0.2085), 'selfcheck': np.float64(0.1158)}
+  Weighted avg AUROC: 0.6132
+
+=== HaluEval raw scores ===
+  Keys: ['dataset', 'meta', 'labels', 'types', 'token_ids', 'tokens', 'scores', 'scores_raw', 'context_utilization', 'composite', 'text']
+  has scores_raw: True
+  entropy: raw=0.5487 neg=0.4513 best=0.5487
+  ig: raw=0.5726 neg=0.4274 best=0.5726
+  kl: raw=0.5453 neg=0.4547 best=0.5453
+  cd: raw=0.4218 neg=0.5782 best=0.5782
+  se: raw=0.5000 neg=0.5000 best=0.5000
+  selfcheck: raw=0.5552 neg=0.4448 best=0.5552
+  composite: AUROC=0.5481
+
+Done.

@@ -1,0 +1,9 @@
+Strategy,RAGTruth_AUROC,CI_low,CI_high,HaluEval_AUROC,Weights
+7. Consensus,0.7551,0.7518,0.7583,0.6657,entropy=0.187 ig=0.169 kl=0.236 cd=0.203 selfcheck=0.203 se=0.001
+8. IQR-Redundancy,0.7537,0.7504,0.7569,0.6626,entropy=0.267 ig=0.259 kl=0.266 cd=0.080 selfcheck=0.124 se=0.004
+3. Variance,0.7515,0.7482,0.7548,0.6558,entropy=0.212 ig=0.266 kl=0.361 cd=0.074 selfcheck=0.086 se=0.002
+4. Entropy,0.7509,0.7478,0.7541,0.6682,entropy=0.209 ig=0.194 kl=0.138 cd=0.223 selfcheck=0.235 se=0.001
+2. Theory-Prior,0.7508,0.7475,0.7541,0.6629,entropy=0.100 ig=0.250 kl=0.200 cd=0.250 selfcheck=0.150 se=0.050
+6. SNR,0.7481,0.7449,0.7514,0.6677,entropy=0.254 ig=0.182 kl=0.162 cd=0.150 selfcheck=0.249 se=0.003
+1. Equal (1/N),0.73,0.7264,0.7334,0.6663,entropy=0.167 ig=0.167 kl=0.167 cd=0.167 selfcheck=0.167 se=0.167
+5. PCA (1st PC),0.73,0.7264,0.7334,0.6663,entropy=0.167 ig=0.167 kl=0.167 cd=0.167 selfcheck=0.167 se=0.167

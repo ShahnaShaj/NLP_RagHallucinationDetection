@@ -1,0 +1,22 @@
+EXPERIMENT 5 — HALLUCINATION TYPE BREAKDOWN
+
+Retrieved context should reduce predictive uncertainty for faithful tokens — when it fails to do so, measured as Information Gain and KL Divergence between context-free and context-conditioned token distributions, that failure signal begins rising before hallucination onset and reaches peak separability at the hallucinated token (t−1 to t=0).
+
+Tests H2: Different hallucination types activate different uncertainty patterns.
+
+Contradictory: Context actively pushes distribution toward correct answer
+while model output diverges — maximum distributional mismatch. KL and IG
+show highest values because the with-context distribution strongly
+disagrees with the without-context distribution.
+
+Unsupported: Model adds content not in context. IG degrades quietly as
+context fails to constrain output. No active conflict, so KL less informative.
+Confidence Drop (CD) may be the dominant signal here.
+
+Fabricated: High entropy (model guessing) but moderate KL (context had
+partially relevant information). Mixed signal confirms different failure mode.
+
+AUROC gap > 0.10 across types confirms that the composite captures
+type-specific uncertainty signatures, NOT a single monolithic signal.
+This is "uncertainty CHANGES due to context manifest differently because
+each type represents a different failure mode in the context-utilization pipeline."

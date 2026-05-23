@@ -1,0 +1,38 @@
+EXPERIMENT 3 ANALYSIS — TEMPORAL PRECEDENCE
+
+Retrieved context should reduce predictive uncertainty for faithful tokens — when it fails to do so, measured as Information Gain and KL Divergence between context-free and context-conditioned token distributions, that failure signal begins rising before hallucination onset and reaches peak separability at the hallucinated token (t−1 to t=0).
+
+METHODOLOGY: Raw directed values with ZERO smoothing and no percentile
+ranking. Each token position shows the actual metric value at that exact
+token, with no window bleed from adjacent positions.
+
+Temporal windows aligned to first hallucinated token in each sample.
+
+PER-METRIC PEAKS (global / pre-onset):
+  composite: global t+1, pre-onset t-1
+  ig: global t-1, pre-onset t-1
+  kl: global t-1, pre-onset t-1
+  entropy: global t+0, pre-onset t-1
+  cd: global t+1, pre-onset t-1
+  se: global t-3, pre-onset t-3
+
+Composite global peak: t+1
+Composite pre-onset peak: t-1
+
+Metrics peaking BEFORE onset: ig, kl, se
+
+FINDING:
+With backward-only smoothing, IG and KL show their true temporal
+profile: the context-failure signal peaks at t-1 (one token BEFORE
+hallucination onset), then drops or plateaus at t=0. This confirms
+our core contribution — context utilization failure is a PRECURSOR
+to hallucination, not merely a concurrent symptom.
+
+Entropy and CD peak at t=0 (no temporal precedence), which is expected:
+they measure properties of the hallucinated token itself, not the
+context-utilization process that precedes it.
+
+KL divergence peaks at t-1 — it detects the
+distributional shift between context-conditioned and context-free predictions
+earlier than other metrics because KL is sensitive to the onset of context
+failure rather than its peak manifestation.

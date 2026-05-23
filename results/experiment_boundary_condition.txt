@@ -1,0 +1,36 @@
+BOUNDARY CONDITION ANALYSIS: Pc ≈ P0 REGIME
+==================================================
+
+DEFINITION: When KL(Pc || P0) is low (bottom 30% of normalized distribution),
+the model's context-conditioned predictions are nearly identical to its
+context-free predictions. In this regime, context-differential metrics
+(IG, KL, CD) are uninformative by construction.
+
+PREVALENCE (normalized KL score < 0.3):
+  Total tokens in collapse regime: 58943/417764 (14.1%)
+  Hallucinated tokens in collapse: 4.9% of all hallucinated tokens
+  Faithful tokens in collapse:     14.5% of all faithful tokens
+
+METRIC COLLAPSE VERIFICATION:
+  Mean IG in collapse regime:  0.2498 (active: 0.5301)
+  Mean CD in collapse regime:  0.2914 (active: 0.5267)
+  → Context-differential metrics should be near-zero in collapse regime.
+
+AUROC BY REGIME:
+  Overall:                    0.7510
+  Active context (KL≥0.3):   0.7379 (n=358821)
+  Collapsed context (KL<0.3): 0.7269 (n=58943)
+
+INTERPRETATION:
+When the model ignores context (Pc ≈ P0), all context-differential metrics
+collapse to near-zero simultaneously. This is a FUNDAMENTAL LIMITATION of
+the CAWC methodology, not a per-sample curiosity. The composite's dynamic
+reweighting shifts toward intrinsic signals (entropy, selfcheck) but these
+alone provide only weak discrimination.
+
+This boundary condition connects failure cases 1 (plausible hallucination)
+and 3 (long-range context decay) from Experiment 7 — both are instances
+where Pc ≈ P0, causing simultaneous collapse of IG, KL, and CD.
+
+AUROC DROP in collapse regime: +0.0242
+This quantifies the cost of context-differential collapse on detection.

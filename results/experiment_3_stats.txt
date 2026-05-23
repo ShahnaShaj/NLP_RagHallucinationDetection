@@ -1,0 +1,27 @@
+TEMPORAL PRECEDENCE — MANN-WHITNEY U TEST
+Using RAW directed values (no percentile ranking, no smoothing).
+H1: Context-differential signals rise before hallucination onset.
+
+  composite (t-1 vs t=0): U=406598, p=0.034420 SIGNIFICANT ✓
+  ig (t-1 vs t=0): U=486582, p=0.000002 SIGNIFICANT ✓
+  kl (t-1 vs t=0): U=597133, p=0.000000 SIGNIFICANT ✓
+  entropy (t-1 vs t=0): U=217049, p=0.000000 SIGNIFICANT ✓
+  cd (t-1 vs t=0): U=394422, p=0.001530 SIGNIFICANT ✓
+  se (t-1 vs t=0): U=nan, p=nan ns
+
+  composite (t-2 vs t=0): U=383544, p=0.000039 SIGNIFICANT ✓
+  ig (t-2 vs t=0): U=437289, p=0.588317 ns
+  kl (t-2 vs t=0): U=546195, p=0.000000 SIGNIFICANT ✓
+  entropy (t-2 vs t=0): U=203334, p=0.000000 SIGNIFICANT ✓
+  cd (t-2 vs t=0): U=344870, p=0.000000 SIGNIFICANT ✓
+  se (t-2 vs t=0): U=nan, p=nan ns
+
+PER-METRIC TEMPORAL PEAKS (raw unsmoothed directed values):
+  composite: global peak at t+1, pre-onset peak at t-1
+  ig: global peak at t-1, pre-onset peak at t-1
+  kl: global peak at t-1, pre-onset peak at t-1
+  entropy: global peak at t+0, pre-onset peak at t-1
+  cd: global peak at t+1, pre-onset peak at t-1
+  se: global peak at t-3, pre-onset peak at t-3
+
+Metrics peaking BEFORE onset (global): ig, kl, se.

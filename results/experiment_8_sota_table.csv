@@ -1,0 +1,7 @@
+Method,AUROC,Type
+LUMINA (supervised),0.87,Supervised upper bound
+ReDeEP (unsupervised),0.82,Unsupervised upper bound
+Semantic Entropy (ref),0.7,SOTA unsupervised
+SelfCheckGPT (ref),0.65,SOTA baseline
+"CAWC v5 (ours, unsupervised)",0.751,Our method
+Entropy only (measured),0.6072,Our baseline

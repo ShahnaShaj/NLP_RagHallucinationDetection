@@ -1,0 +1,20 @@
+EXPERIMENT 10: COMPOSITE VARIANT COMPARISON
+==================================================
+
+Tests whether CAWC v5's complexity (dynamic weighting, interaction terms,
+gradient features, max-pooling, KL-dominance) actually improves performance
+over simpler alternatives.
+
+RESULTS:
+  CAWC v5 (current)                   AUROC=0.7510 Δ=+0.0000
+  Static weights (u=0.5)              AUROC=0.7510 Δ=+0.0000
+  Simple weighted avg (no extras)     AUROC=0.7323 Δ=-0.0188
+  Higher selfcheck (0.20)             AUROC=0.7334 Δ=-0.0176
+  No SE (weight=0)                    AUROC=0.7431 Δ=-0.0080
+  Top-3 (IG+KL+CD equal)              AUROC=0.7270 Δ=-0.0240
+  IG-only                             AUROC=0.7180 Δ=-0.0330
+
+BEST VARIANT: CAWC v5 (current) (AUROC=0.7510)
+
+KEY FINDINGS:
+• Dynamic weighting is NEUTRAL: context_utilization modulation has negligible effect.

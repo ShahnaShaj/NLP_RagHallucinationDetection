@@ -1,0 +1,67 @@
+EXPERIMENT 7 — FAILURE CASE ANALYSIS
+==================================================
+
+Retrieved context should reduce predictive uncertainty for faithful tokens — when it fails to do so, measured as Information Gain and KL Divergence between context-free and context-conditioned token distributions, that failure signal begins rising before hallucination onset and reaches peak separability at the hallucinated token (t−1 to t=0).
+
+These are hallucinated tokens our method FAILED to flag (false negatives).
+Sorted by composite score (lowest = most confidently missed).
+
+==================================================
+FAILURE CASE 1: PLAUSIBLE HALLUCINATION (Low KL)
+==================================================
+Context supports a semantically similar but factually wrong token. KL is low because P_without and P_with are not far apart — context does not strongly oppose this token. Our method sees 'small belief shift' and misses it. MECHANISTIC: The token is plausible under both distributions, so context-differential metrics fail. This is a fundamental limit of distributional comparison methods.
+
+  Type: contradictory
+  Generator: mistral-7B-instruct
+  Composite score: 0.257478 (low = missed)
+  Entropy: 0.1882, IG: 0.0974, KL: 0.1665, CD: 0.0861
+  Token position: 155 of 204
+
+==================================================
+FAILURE CASE 2: OVERCONFIDENT HALLUCINATION (Low Entropy)
+==================================================
+Model is very certain and wrong. Max(P_with) is high, entropy is low. Our method sees 'confident = faithful' but the model has memorized wrong information. MECHANISTIC: The training data taught the model a strong prior that overwhelms the context signal. Entropy-based and context-differential methods both fail because the model's internal representation is confidently wrong regardless of context.
+
+  Type: contradictory
+  Generator: llama-2-7b-chat
+  Composite score: 0.269597 (low = missed)
+  Entropy: 0.2026, IG: 0.1001, KL: 0.1105, CD: 0.0446
+  Token position: 98 of 156
+
+==================================================
+FAILURE CASE 3: LONG-RANGE CONTEXT DECAY
+==================================================
+Hallucination occurs far from context window. By this position, context signal has decayed and IG/KL are near-zero despite hallucination. MECHANISTIC: Autoregressive attention dilutes context representation over many generation steps. The with-context and without-context distributions converge, making context-differential detection impossible.
+
+  Type: contradictory
+  Generator: mistral-7B-instruct
+  Composite score: 0.270777 (low = missed)
+  Entropy: 0.1794, IG: 0.0915, KL: 0.1640, CD: 0.0730
+  Token position: 154 of 204
+
+BOUNDARY CONDITION: Pc ≈ P0 (Context-Differential Collapse)
+==================================================
+
+Failure cases 1 (plausible hallucination) and 3 (long-range context decay)
+share a single root cause: Pc ≈ P0 (context-conditioned and context-free
+distributions are nearly identical). When this occurs:
+  - IG = H(P0) - H(Pc) ≈ 0
+  - KL(Pc || P0) ≈ 0
+  - CD = P0(tok) - Pc(tok) ≈ 0
+
+All three context-differential signals collapse SIMULTANEOUSLY.
+This is a FUNDAMENTAL LIMITATION of the CAWC methodology, not a
+per-sample curiosity. The composite's dynamic reweighting via
+context_utilization shifts toward intrinsic signals (entropy, selfcheck)
+but at u≈0.5 these receive only ~4% of total weight, which is
+insufficient to compensate for the collapsed context-differential signals.
+
+FORMAL DEFINITION: When KL(Pc || P0) < ε, context-differential
+metrics are uninformative by construction. This defines the boundary
+of applicability for the CAWC method.
+
+IMPLICATION:
+These failure modes define the limits of unsupervised context-differential
+methods. Supervised methods (LUMINA) handle overconfident cases through
+label exposure. Multi-model ensembles could address plausible hallucinations.
+Attention-based context tracking could address long-range decay.

@@ -1,0 +1,109 @@
+2026-04-20 11:00:59,339 [INFO] ======================================================================
+2026-04-20 11:00:59,340 [INFO] MULTI-STRATEGY WEIGHT ABLATION & ROBUSTNESS ANALYSIS
+2026-04-20 11:00:59,340 [INFO] ======================================================================
+2026-04-20 11:00:59,340 [INFO] Loading caches...
+2026-04-20 11:01:05,616 [INFO]   Train=15089  Test=2700  Halu=10000
+2026-04-20 11:01:05,616 [INFO] Computing train population statistics (unsupervised)...
+2026-04-20 11:01:06,389 [INFO]   entropy: mean=0.9027 std=0.9058 n=2431092
+2026-04-20 11:01:06,454 [INFO]   ig: mean=-0.8100 std=1.1673 n=2431092
+2026-04-20 11:01:06,509 [INFO]   kl: mean=-0.9699 std=1.5482 n=2431092
+2026-04-20 11:01:06,566 [INFO]   cd: mean=-0.1872 std=0.3171 n=2431092
+2026-04-20 11:01:06,620 [INFO]   selfcheck: mean=0.3454 std=0.3547 n=2431092
+2026-04-20 11:01:06,659 [INFO]   se: mean=nan std=nan n=2431092
+2026-04-20 11:01:06,686 [INFO] Building sample pools from train data...
+2026-04-20 11:01:12,912 [INFO]   entropy: pool=508230 iqr_samples=15089
+2026-04-20 11:01:12,912 [INFO]   ig: pool=508230 iqr_samples=15089
+2026-04-20 11:01:12,912 [INFO]   kl: pool=508230 iqr_samples=15089
+2026-04-20 11:01:12,912 [INFO]   cd: pool=508230 iqr_samples=15089
+2026-04-20 11:01:12,912 [INFO]   selfcheck: pool=508230 iqr_samples=15089
+2026-04-20 11:01:12,912 [INFO]   se: pool=0 iqr_samples=0
+2026-04-20 11:01:12,912 [INFO] Computing pairwise correlations...
+2026-04-20 11:01:12,970 [INFO]     corr(entropy, ig) = 0.0351
+2026-04-20 11:01:13,034 [INFO]     corr(entropy, kl) = 0.4052
+2026-04-20 11:01:13,130 [INFO]     corr(entropy, cd) = 0.1984
+2026-04-20 11:01:13,196 [INFO]     corr(entropy, selfcheck) = 0.8906
+2026-04-20 11:01:13,248 [INFO]     corr(ig, kl) = 0.6700
+2026-04-20 11:01:13,307 [INFO]     corr(ig, cd) = 0.6248
+2026-04-20 11:01:13,362 [INFO]     corr(ig, selfcheck) = 0.0581
+2026-04-20 11:01:13,422 [INFO]     corr(kl, cd) = 0.4920
+2026-04-20 11:01:13,481 [INFO]     corr(kl, selfcheck) = 0.3681
+2026-04-20 11:01:13,540 [INFO]     corr(cd, selfcheck) = 0.3495
+2026-04-20 11:01:13,540 [INFO] 
+Computing 8 weighting strategies...
+2026-04-20 11:01:13,540 [INFO]   Equal:       {'entropy': 0.1667, 'ig': 0.1667, 'kl': 0.1667, 'cd': 0.1667, 'selfcheck': 0.1667, 'se': 0.1667}
+2026-04-20 11:01:13,540 [INFO]   Theory:      {'ig': 0.25, 'cd': 0.25, 'kl': 0.2, 'selfcheck': 0.15, 'entropy': 0.1, 'se': 0.05}
+2026-04-20 11:01:13,634 [INFO]   Variance:    {'entropy': 0.2116, 'ig': 0.2663, 'kl': 0.3606, 'cd': 0.0738, 'selfcheck': 0.0855, 'se': 0.0023}
+2026-04-20 11:01:13,739 [INFO]   Entropy:     {'entropy': 0.2087, 'ig': 0.1941, 'kl': 0.1384, 'cd': 0.2225, 'selfcheck': 0.2355, 'se': 0.0007}
+2026-04-20 11:01:13,739 [WARNING]   PCA: insufficient data, falling back to equal weights
+2026-04-20 11:01:13,739 [INFO]   PCA:         {'entropy': 0.1667, 'ig': 0.1667, 'kl': 0.1667, 'cd': 0.1667, 'selfcheck': 0.1667, 'se': 0.1667}
+2026-04-20 11:01:13,836 [INFO]   SNR:         {'entropy': 0.2543, 'ig': 0.1824, 'kl': 0.1623, 'cd': 0.1499, 'selfcheck': 0.2486, 'se': 0.0025}
+2026-04-20 11:01:13,836 [INFO]   Consensus:   {'entropy': np.float64(0.1866), 'ig': np.float64(0.1694), 'kl': np.float64(0.2362), 'cd': np.float64(0.2032), 'selfcheck': np.float64(0.2034), 'se': np.float64(0.0012)}
+2026-04-20 11:01:13,843 [INFO]   IQR-Redund:  {'entropy': np.float64(0.2665), 'ig': np.float64(0.2594), 'kl': np.float64(0.2657), 'cd': np.float64(0.0804), 'selfcheck': np.float64(0.1241), 'se': np.float64(0.0039)}
+2026-04-20 11:01:13,843 [INFO] 
+Precomputing test/halu intermediates...
+2026-04-20 11:01:27,630 [INFO]   Test: 2700 samples
+2026-04-20 11:01:57,106 [INFO]   Halu: 10000 samples
+2026-04-20 11:01:57,106 [INFO] =================================================================
+2026-04-20 11:01:57,106 [INFO] MULTI-STRATEGY WEIGHT COMPARISON (8 unsupervised methods)
+2026-04-20 11:01:57,106 [INFO] =================================================================
+2026-04-20 11:03:38,720 [INFO]   1. Equal (1/N)         RAG=0.7300 [0.7264,0.7334]  Halu=0.6663  | entropy=0.167 ig=0.167 kl=0.167 cd=0.167 selfcheck=0.167 se=0.167
+2026-04-20 11:05:20,564 [INFO]   2. Theory-Prior        RAG=0.7508 [0.7475,0.7541]  Halu=0.6629  | entropy=0.100 ig=0.250 kl=0.200 cd=0.250 selfcheck=0.150 se=0.050
+2026-04-20 11:06:56,545 [INFO]   3. Variance            RAG=0.7515 [0.7482,0.7548]  Halu=0.6558  | entropy=0.212 ig=0.266 kl=0.361 cd=0.074 selfcheck=0.086 se=0.002
+2026-04-20 11:08:25,507 [INFO]   4. Entropy             RAG=0.7509 [0.7478,0.7541]  Halu=0.6682  | entropy=0.209 ig=0.194 kl=0.138 cd=0.223 selfcheck=0.235 se=0.001
+2026-04-20 11:09:54,078 [INFO]   5. PCA (1st PC)        RAG=0.7300 [0.7264,0.7334]  Halu=0.6663  | entropy=0.167 ig=0.167 kl=0.167 cd=0.167 selfcheck=0.167 se=0.167
+2026-04-20 11:11:23,057 [INFO]   6. SNR                 RAG=0.7481 [0.7449,0.7514]  Halu=0.6677  | entropy=0.254 ig=0.182 kl=0.162 cd=0.150 selfcheck=0.249 se=0.003
+2026-04-20 11:12:52,016 [INFO]   7. Consensus           RAG=0.7551 [0.7518,0.7583]  Halu=0.6657  | entropy=0.187 ig=0.169 kl=0.236 cd=0.203 selfcheck=0.203 se=0.001
+2026-04-20 11:14:20,721 [INFO]   8. IQR-Redundancy      RAG=0.7537 [0.7504,0.7569]  Halu=0.6626  | entropy=0.267 ig=0.259 kl=0.266 cd=0.080 selfcheck=0.124 se=0.004
+2026-04-20 11:14:20,721 [INFO] 
+  Best:   7. Consensus (AUROC=0.7551)
+2026-04-20 11:14:20,721 [INFO]   Worst:  5. PCA (1st PC) (AUROC=0.7300)
+2026-04-20 11:14:20,725 [INFO]   Spread: 0.0251
+2026-04-20 11:14:20,890 [INFO] 
+Using best strategy '7. Consensus' for robustness analysis
+
+2026-04-20 11:14:20,890 [INFO] =================================================================
+2026-04-20 11:14:20,890 [INFO] PERTURBATION ROBUSTNESS (on best strategy)
+2026-04-20 11:14:20,890 [INFO] =================================================================
+2026-04-20 11:14:20,999 [INFO]   --- Perturbation ±50% (50 trials) ---
+2026-04-20 11:14:22,019 [INFO]     Trial 10/50: 0.7550
+2026-04-20 11:14:23,016 [INFO]     Trial 20/50: 0.7551
+2026-04-20 11:14:24,040 [INFO]     Trial 30/50: 0.7555
+2026-04-20 11:14:25,042 [INFO]     Trial 40/50: 0.7546
+2026-04-20 11:14:26,052 [INFO]     Trial 50/50: 0.7516
+2026-04-20 11:14:26,053 [INFO]   ±50%: mean=0.7538 ±0.0022  range=[0.7445,0.7559]  calibrated wins 70%
+2026-04-20 11:14:26,053 [INFO]   --- Dirichlet α=1 (50 trials) ---
+2026-04-20 11:14:27,040 [INFO]     Trial 10/50: 0.7012
+2026-04-20 11:14:28,017 [INFO]     Trial 20/50: 0.7276
+2026-04-20 11:14:29,015 [INFO]     Trial 30/50: 0.6939
+2026-04-20 11:14:30,007 [INFO]     Trial 40/50: 0.7038
+2026-04-20 11:14:30,998 [INFO]     Trial 50/50: 0.7487
+2026-04-20 11:14:30,999 [INFO]   Dir:  mean=0.7289 ±0.0224  range=[0.6791,0.7548]  calibrated wins 100%
+2026-04-20 11:14:31,182 [INFO] 
+2026-04-20 11:14:31,182 [INFO] =================================================================
+2026-04-20 11:14:31,182 [INFO] LEAVE-ONE-OUT COMPONENT ABLATION (proper exclusion)
+2026-04-20 11:14:31,182 [INFO] =================================================================
+2026-04-20 11:16:12,271 [INFO]   Baseline (all): AUROC=0.7551 CI=[0.7518,0.7583]
+2026-04-20 11:16:40,835 [INFO]   Evaluating without entropy...
+2026-04-20 11:18:49,613 [INFO]     Remove entropy      AUROC=0.7528  Δ=+0.0024  Halu=0.6602
+2026-04-20 11:18:49,613 [INFO]   Evaluating without ig...
+2026-04-20 11:20:55,703 [INFO]     Remove ig           AUROC=0.7458  Δ=+0.0093  Halu=0.6607
+2026-04-20 11:20:55,703 [INFO]   Evaluating without kl...
+2026-04-20 11:23:03,557 [INFO]     Remove kl           AUROC=0.7353  Δ=+0.0198  Halu=0.6685
+2026-04-20 11:23:03,558 [INFO]   Evaluating without cd...
+2026-04-20 11:25:06,709 [INFO]     Remove cd           AUROC=0.7495  Δ=+0.0057  Halu=0.6622
+2026-04-20 11:25:06,710 [INFO]   Evaluating without selfcheck...
+2026-04-20 11:27:18,606 [INFO]     Remove selfcheck    AUROC=0.7529  Δ=+0.0022  Halu=0.6588
+2026-04-20 11:27:18,606 [INFO]   Evaluating without se...
+2026-04-20 11:29:27,551 [INFO]     Remove se           AUROC=0.7551  Δ=-0.0000  Halu=0.6657
+2026-04-20 11:29:27,675 [INFO] 
+2026-04-20 11:29:27,677 [INFO] Analysis written → ablation_analysis.txt
+2026-04-20 11:29:27,677 [INFO] 
+2026-04-20 11:29:27,677 [INFO] ======================================================================
+2026-04-20 11:29:27,677 [INFO] COMPLETE in 1708.3s
+2026-04-20 11:29:27,677 [INFO] ======================================================================
+2026-04-20 11:29:27,677 [INFO]   [✓] Strategy spread < 0.06: 0.0251
+2026-04-20 11:29:27,677 [INFO]   [✓] Perturbation std < 0.03: 0.0022
+2026-04-20 11:29:27,678 [INFO]   [✓] Perturbation min > 0.60: 0.7445
+2026-04-20 11:29:27,678 [INFO]   [✓] All LOO removals cause drop
+2026-04-20 11:29:27,678 [INFO] 
+ALL ROBUSTNESS CHECKS PASSED ✓

@@ -1,0 +1,167 @@
+2026-05-23 15:17:08,865 [INFO] ======================================================================
+2026-05-23 15:17:08,865 [INFO] TRACK A — UNSUPERVISED CAWC v5 PIPELINE
+2026-05-23 15:17:08,865 [INFO] ======================================================================
+2026-05-23 15:17:08,866 [INFO] ZERO supervised components. All parameters from theory.
+2026-05-23 15:17:08,866 [INFO] Loading cached data...
+2026-05-23 15:17:15,968 [INFO]   Train: 15089 samples
+2026-05-23 15:17:15,968 [INFO]   Test:  2700 samples
+2026-05-23 15:17:15,968 [INFO]   Halu:  10000 samples
+2026-05-23 15:17:15,968 [INFO] Computing train population statistics (unsupervised)...
+2026-05-23 15:17:16,843 [INFO]   entropy: mean=0.9027 std=0.9058 n=2431092
+2026-05-23 15:17:16,907 [INFO]   ig: mean=-0.8100 std=1.1673 n=2431092
+2026-05-23 15:17:16,990 [INFO]   kl: mean=-0.9699 std=1.5482 n=2431092
+2026-05-23 15:17:17,054 [INFO]   cd: mean=-0.1872 std=0.3171 n=2431092
+2026-05-23 15:17:17,118 [INFO]   selfcheck: mean=0.3454 std=0.3547 n=2431092
+2026-05-23 15:17:17,157 [INFO]   se: mean=nan std=nan n=2431092
+2026-05-23 15:17:17,182 [INFO]   Computing variance-based weights from train distribution...
+2026-05-23 15:17:18,831 [INFO]     entropy: std=0.9058
+2026-05-23 15:17:18,934 [INFO]     ig: std=1.1673
+2026-05-23 15:17:19,036 [INFO]     kl: std=1.5482
+2026-05-23 15:17:19,134 [INFO]     cd: std=0.3171
+2026-05-23 15:17:19,231 [INFO]     selfcheck: std=0.3547
+2026-05-23 15:17:19,234 [INFO]     se: std=0.0000
+2026-05-23 15:17:19,234 [INFO]   Variance-based weights (unsupervised):
+2026-05-23 15:17:19,235 [INFO]     entropy: 0.2089
+2026-05-23 15:17:19,235 [INFO]     ig: 0.2692
+2026-05-23 15:17:19,235 [INFO]     kl: 0.3570
+2026-05-23 15:17:19,235 [INFO]     cd: 0.0732
+2026-05-23 15:17:19,235 [INFO]     selfcheck: 0.0818
+2026-05-23 15:17:19,235 [INFO]     se: 0.0099
+2026-05-23 15:17:19,347 [INFO] Processing test set with unsupervised composite...
+2026-05-23 15:17:45,756 [INFO]   Processed 2700 test samples
+2026-05-23 15:17:45,759 [INFO] Processing HaluEval with unsupervised composite...
+2026-05-23 15:18:45,964 [INFO]   Processed 10000 halueval samples
+2026-05-23 15:18:45,964 [INFO] ======================================== RUNNING EXPERIMENTS ========================================
+2026-05-23 15:18:45,964 [INFO] ============================================================
+2026-05-23 15:18:45,964 [INFO] EXPERIMENTS 1 & 2: Incremental Composite AUROC
+2026-05-23 15:18:45,964 [INFO] ============================================================
+2026-05-23 15:20:54,125 [INFO]   Baseline 1: Token Entropy                AUROC=0.6072 CI=[0.6028,0.6112]
+2026-05-23 15:23:03,119 [INFO]   Baseline 2: SelfCheckGPT-NLI (Manakul 2023) AUROC=0.6098 CI=[0.6054,0.6138]
+2026-05-23 15:25:11,200 [INFO]   +IG (entropy+selfcheck+ig)               AUROC=0.6915 CI=[0.6877,0.6951]
+2026-05-23 15:27:22,265 [INFO]   +KL (entropy+selfcheck+ig+kl)            AUROC=0.7338 CI=[0.7304,0.7371]
+2026-05-23 15:29:28,997 [INFO]   +CD (entropy+selfcheck+ig+kl+cd)         AUROC=0.7418 CI=[0.7384,0.7453]
+2026-05-23 15:31:37,056 [INFO]   +SE (DeBERTa NLI clustering)             AUROC=0.7119 CI=[0.7083,0.7156]
+2026-05-23 15:33:44,767 [INFO]   CAWC v5 Composite (unsupervised)         AUROC=0.7510 CI=[0.7477,0.7544]
+2026-05-23 15:33:44,767 [INFO]   --- Individual Metric AUROCs (same normalization) ---
+2026-05-23 15:35:51,980 [INFO]   Individual: entropy                      AUROC=0.6072 CI=[0.6028,0.6112]
+2026-05-23 15:37:59,550 [INFO]   Individual: ig                           AUROC=0.7180 CI=[0.7147,0.7218]
+2026-05-23 15:40:07,659 [INFO]   Individual: kl                           AUROC=0.6719 CI=[0.6680,0.6759]
+2026-05-23 15:46:32,058 [INFO]   Individual: cd                           AUROC=0.7268 CI=[0.7235,0.7306]
+2026-05-23 15:53:15,901 [INFO]   Individual: selfcheck                    AUROC=0.6098 CI=[0.6054,0.6138]
+2026-05-23 15:56:54,972 [INFO]   Individual: se                           AUROC=0.4945 CI=[0.4920,0.4970]
+2026-05-23 15:56:54,974 [INFO]   --- Composite Superiority Check ---
+2026-05-23 15:56:54,974 [INFO]   CAWC v5 Composite:           0.7510
+2026-05-23 15:56:54,974 [INFO]   Best individual (Individual: cd): 0.7268
+2026-05-23 15:56:54,974 [INFO]   Composite vs best individual: +0.0242
+2026-05-23 15:56:54,974 [INFO]   COMPOSITE SUPERIOR TO BEST INDIVIDUAL: YES
+2026-05-23 15:56:55,174 [INFO] ============================================================
+2026-05-23 15:56:55,174 [INFO] EXPERIMENT 3: Temporal Precedence (raw unsmoothed values)
+2026-05-23 15:56:55,174 [INFO] ============================================================
+2026-05-23 15:56:55,319 [INFO]   Raw temporal deltas (unsmoothed directed values):
+2026-05-23 15:56:55,319 [INFO]     composite: t-3=0.7516 t-2=0.7614 t-1=0.7727 t=0=0.7827 t+1=0.7925  delta(t-1)=+0.0212 delta(t=0)=+0.0311 delta(t+1)=+0.0409
+2026-05-23 15:56:55,319 [INFO]     ig: t-3=-0.7637 t-2=-0.6404 t-1=-0.4164 t=0=-0.5926 t+1=-0.4662  delta(t-1)=+0.3472 delta(t=0)=+0.1710 delta(t+1)=+0.2975
+2026-05-23 15:56:55,319 [INFO]     kl: t-3=-0.9331 t-2=-0.8136 t-1=-0.5082 t=0=-1.0529 t+1=-0.8591  delta(t-1)=+0.4250 delta(t=0)=-0.1198 delta(t+1)=+0.0740
+2026-05-23 15:56:55,320 [INFO]     entropy: t-3=1.0015 t-2=0.9352 t-1=1.0479 t=0=1.8644 t+1=1.4435  delta(t-1)=+0.0465 delta(t=0)=+0.8629 delta(t+1)=+0.4421
+2026-05-23 15:56:55,321 [INFO]     cd: t-3=-0.1712 t-2=-0.1520 t-1=-0.0712 t=0=-0.0518 t+1=-0.0483  delta(t-1)=+0.1000 delta(t=0)=+0.1194 delta(t+1)=+0.1229
+2026-05-23 15:56:55,321 [INFO]     se: t-3=nan t-2=nan t-1=nan t=0=nan t+1=nan  delta(t-1)=+nan delta(t=0)=+nan delta(t+1)=+nan
+2026-05-23 15:56:57,812 [INFO]   Composite global peak: t+1, pre-onset: t-1 (IG global: t-1, KL global: t-1)
+2026-05-23 15:56:57,812 [INFO] ============================================================
+2026-05-23 15:56:57,812 [INFO] EXPERIMENT 4: Cross-Domain Transfer (HaluEval)
+2026-05-23 15:56:57,814 [INFO] ============================================================
+2026-05-23 16:17:13,646 [INFO]   composite       RAG=0.7510 Halu=0.6556 Drop=+0.0954
+2026-05-23 16:37:58,357 [INFO]   ig              RAG=0.7180 Halu=0.6334 Drop=+0.0846
+2026-05-23 16:58:24,394 [INFO]   kl              RAG=0.6719 Halu=0.5729 Drop=+0.0990
+2026-05-23 17:19:59,300 [INFO]   entropy         RAG=0.6072 Halu=0.6123 Drop=-0.0051
+2026-05-23 17:41:58,372 [INFO]   selfcheck       RAG=0.6098 Halu=0.6105 Drop=-0.0007
+2026-05-23 17:51:30,605 [INFO]   se              RAG=0.4945 Halu=0.5000 Drop=-0.0055
+2026-05-23 17:51:30,670 [INFO] ============================================================
+2026-05-23 17:51:30,670 [INFO] EXPERIMENT 5: Hallucination Type Breakdown
+2026-05-23 17:51:30,670 [INFO] ============================================================
+2026-05-23 17:58:26,427 [INFO]   contradictory: n=5692 AUROC=0.6472 best=composite(0.6472)
+2026-05-23 18:05:03,292 [INFO]   unsupported: n=1877 AUROC=0.8264 best=composite(0.8264)
+2026-05-23 18:12:00,497 [INFO]   fabricated: n=9834 AUROC=0.7968 best=composite(0.7968)
+2026-05-23 18:12:00,509 [INFO]   AUROC gap: 0.1792 (ACHIEVED ✓)
+2026-05-23 18:12:00,651 [INFO] ============================================================
+2026-05-23 18:12:00,651 [INFO] EXPERIMENT 6: Generator Breakdown
+2026-05-23 18:12:00,652 [INFO] ============================================================
+2026-05-23 18:12:01,472 [INFO]   gpt-3.5-turbo-0613        AUROC=0.7226 best=kl(0.7233)
+2026-05-23 18:12:01,869 [INFO]   gpt-4-0613                AUROC=0.6857 best=composite(0.6857)
+2026-05-23 18:12:02,336 [INFO]   llama-2-13b-chat          AUROC=0.7214 best=composite(0.7214)
+2026-05-23 18:12:02,776 [INFO]   llama-2-70b-chat          AUROC=0.7647 best=composite(0.7647)
+2026-05-23 18:12:03,239 [INFO]   llama-2-7b-chat           AUROC=0.6916 best=composite(0.6916)
+2026-05-23 18:12:03,642 [INFO]   mistral-7B-instruct       AUROC=0.7324 best=composite(0.7324)
+2026-05-23 18:12:03,730 [INFO] ============================================================
+2026-05-23 18:12:03,732 [INFO] EXPERIMENT 7: Failure Case Analysis
+2026-05-23 18:12:03,732 [INFO] ============================================================
+2026-05-23 18:12:04,024 [INFO]   3 failure cases documented
+2026-05-23 18:12:04,035 [INFO] ============================================================
+2026-05-23 18:12:04,036 [INFO] EXPERIMENT 8: SOTA Gap
+2026-05-23 18:12:04,036 [INFO] ============================================================
+2026-05-23 18:12:04,047 [INFO]   SOTA gap closed: 54.7%
+2026-05-23 18:12:04,047 [INFO] ============================================================
+2026-05-23 18:12:04,048 [INFO] WEIGHT SENSITIVITY ANALYSIS
+2026-05-23 18:12:04,048 [INFO] ============================================================
+2026-05-23 18:12:04,439 [INFO]   CAWC v5 baseline: 0.7510
+2026-05-23 18:12:05,529 [INFO]   Equal weights:    0.7119 (Δ=-0.0392)
+2026-05-23 18:12:57,714 [INFO]   Random weights:   0.7007 ±0.0253 (Δ=-0.0503)
+2026-05-23 18:12:57,716 [INFO]   --- Leave-One-Metric-Out ---
+2026-05-23 18:12:58,808 [INFO]     Remove entropy     : 0.7084 (Δ=-0.0427)
+2026-05-23 18:12:59,937 [INFO]     Remove ig          : 0.6889 (Δ=-0.0622)
+2026-05-23 18:13:01,084 [INFO]     Remove kl          : 0.6862 (Δ=-0.0648)
+2026-05-23 18:13:02,189 [INFO]     Remove cd          : 0.6940 (Δ=-0.0570)
+2026-05-23 18:13:03,313 [INFO]     Remove selfcheck   : 0.7087 (Δ=-0.0423)
+2026-05-23 18:13:04,375 [INFO]     Remove se          : 0.7418 (Δ=-0.0092)
+2026-05-23 18:13:59,857 [INFO]   ±20% perturb:     0.7408 ±0.0012 (Δ=-0.0103)
+2026-05-23 18:13:59,870 [INFO]   Weight ablation complete. Saved to experiment_weight_ablation.csv
+2026-05-23 18:13:59,874 [INFO] ============================================================
+2026-05-23 18:13:59,874 [INFO] BOUNDARY CONDITION: Pc ≈ P0 Analysis
+2026-05-23 18:13:59,879 [INFO] ============================================================
+2026-05-23 18:14:00,806 [INFO]   Collapse prevalence: 14.1% of tokens
+2026-05-23 18:14:00,806 [INFO]   AUROC active: 0.7379, collapse: 0.7269, overall: 0.7510
+2026-05-23 18:14:00,811 [INFO]   Boundary condition analysis saved.
+2026-05-23 18:14:00,817 [INFO] ============================================================
+2026-05-23 18:14:00,818 [INFO] EXPERIMENT 9: Timestep AUROC Sweep
+2026-05-23 18:14:00,818 [INFO] ============================================================
+2026-05-23 18:14:52,357 [INFO]   composite   : peak AUROC at t+2 = 0.7578
+2026-05-23 18:14:52,365 [INFO]   ig          : peak AUROC at t+2 = 0.7253
+2026-05-23 18:14:52,365 [INFO]   kl          : peak AUROC at t+2 = 0.6842
+2026-05-23 18:14:52,365 [INFO]   cd          : peak AUROC at t+1 = 0.7286
+2026-05-23 18:14:52,365 [INFO]   entropy     : peak AUROC at t-1 = 0.6075
+2026-05-23 18:14:52,365 [INFO]   selfcheck   : peak AUROC at t+0 = 0.6098
+2026-05-23 18:14:52,380 [INFO] ============================================================
+2026-05-23 18:14:52,382 [INFO] EXPERIMENT 10: Composite Variants
+2026-05-23 18:14:52,383 [INFO] ============================================================
+2026-05-23 18:17:11,039 [INFO]   CAWC v5 (current):     0.7510
+2026-05-23 18:17:47,197 [INFO]   Static weights:        0.7510 (Δ=+0.0000)
+2026-05-23 18:18:11,903 [INFO]   Simple (no extras):    0.7323 (Δ=-0.0188)
+2026-05-23 18:18:36,992 [INFO]   Higher selfcheck:      0.7334 (Δ=-0.0176)
+2026-05-23 18:19:01,743 [INFO]   No SE:                 0.7431 (Δ=-0.0080)
+2026-05-23 18:19:26,579 [INFO]   Top-3 (IG+KL+CD):     0.7270 (Δ=-0.0240)
+2026-05-23 18:19:32,265 [INFO]   IG-only:               0.7180 (Δ=-0.0330)
+2026-05-23 18:19:32,279 [INFO]   Best variant: CAWC v5 (current) (0.7510)
+2026-05-23 18:19:32,436 [INFO]   Demo data saved (76 tokens, 61 hallucinated)
+2026-05-23 18:19:32,436 [INFO]   Demo pipeline written to demo_pipeline.py
+2026-05-23 18:19:32,437 [INFO] ======================================================================
+2026-05-23 18:19:32,437 [INFO] FINAL CHECKLIST
+2026-05-23 18:19:32,437 [INFO] ======================================================================
+2026-05-23 18:19:32,440 [INFO]   [✓] UNSUPERVISED: No sklearn classifiers
+2026-05-23 18:19:32,441 [INFO]   [✓] Directions from theory (not data)
+2026-05-23 18:19:32,442 [INFO]   [✓] Train labels NOT used for composite
+2026-05-23 18:19:32,444 [INFO]   [✓] Composite AUROC: 0.7510
+2026-05-23 18:19:32,445 [INFO]   [✓] Composite >= 0.75: 0.7510
+2026-05-23 18:19:32,447 [INFO]   [✓] Both baselines beaten
+2026-05-23 18:19:32,448 [INFO]   [✓] Bootstrap CI reported
+2026-05-23 18:19:32,450 [INFO]   [✓] Temporal plot saved
+2026-05-23 18:19:32,451 [INFO]   [✓] Temporal: composite global peak t+1, pre-onset t-1
+2026-05-23 18:19:32,453 [INFO]   [✓] HaluEval zero-shot: 0.6556
+2026-05-23 18:19:32,455 [INFO]   [✓] Weight ablation completed
+2026-05-23 18:19:32,456 [INFO]   [✓] Boundary condition analysis completed
+2026-05-23 18:19:32,458 [INFO]   [✓] Type breakdown done
+2026-05-23 18:19:32,459 [INFO]   [✓] SOTA gap: 54.7%
+2026-05-23 18:19:32,461 [INFO]   [✓] Failure cases documented
+2026-05-23 18:19:32,462 [INFO]   [✓] Demo pipeline created
+2026-05-23 18:19:32,463 [INFO] 
+2026-05-23 18:19:32,464 [INFO] FINAL COMPOSITE AUROC: 0.7510
+2026-05-23 18:19:32,464 [INFO] HALUEVAL ZERO-SHOT: 0.6556
+2026-05-23 18:19:32,464 [INFO] TOTAL TIME: 10943.6 seconds
+2026-05-23 18:19:32,464 [INFO] ALL CHECKS PASSED ✓
