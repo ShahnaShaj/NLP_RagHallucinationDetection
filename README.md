@@ -92,9 +92,7 @@ The framework executes 8 key configurations + deep architectural proofs to valid
 
 ---
 
-## 🚀 How to Reproduce The Results
-
-To cleanly match the **0.7510 AUROC** referenced in logs:
+## 🚀 How to Reproduce The Results and Demo
 
 1. **Stage The Inference Pipeline:**
    This calculates logits and raw token bounds. It creates data caches incrementally. *Note: Running this will overwrite caches and invoke GPU requirements.*
@@ -108,8 +106,9 @@ To cleanly match the **0.7510 AUROC** referenced in logs:
    ```bash
    python run_final_unsupervised.py
    ```
-
-3. **Run Live Action Evaluator Test:**
+   OR
+1. **Download and place the .pkl cache files in results folder directly from https://drive.google.com/drive/folders/1zxq9tHx-GEShgPhWodRAklntw4XoNZzC?usp=sharing**"
+2. **Run Live Action Evaluator Test:**
    Runs unseen sequences directly into proxy distribution limits over the variance architecture bounds mechanically.
    ```bash
    python demo_pipeline.py --query "Tell me about the Eiffel Tower" \
