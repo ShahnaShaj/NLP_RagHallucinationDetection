@@ -111,7 +111,7 @@ The framework executes 8 key configurations + deep architectural proofs to valid
 2. **Run Live Action Evaluator Test:**
    Runs unseen sequences directly into proxy distribution limits over the variance architecture bounds mechanically.
    ```bash
-   python demo_pipeline.py --query "Tell me about the Eiffel Tower" \
-     --context "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It was constructed from 1887 to 1889." \
-     --response "The Eiffel Tower is located in Paris, France. It was built in 1995 by architect Frank Lloyd Wright."
+   python demo_pipeline.py --query "Tell me about the Eiffel Tower"
+    --context "The Eiffel Tower is a wrought-iron lattice tower on the Champ de Mars in Paris, France. It was constructed from 1887 to 1889 as the centerpiece of the 1889 World Fair.It is named after engineer Gustave Eiffel."
+    --response "The Eiffel Tower is located in Paris, France. It was built in 1995 by architect Frank Lloyd Wright as a memorial for World War II."
    ```
